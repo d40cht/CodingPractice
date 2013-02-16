@@ -119,6 +119,13 @@ class DiscreteMath extends FunSuite
     }
 }
 
+class BloomFilter extends FunSuite
+{
+    test("Bloom filter")
+    {
+    }
+}
+
 
 class Concurrency extends FunSuite
 {
