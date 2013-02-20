@@ -111,6 +111,10 @@ class SortTest extends FunSuite
 
 class HashingTest extends FunSuite
 {   
+    test("MurmurHash")
+    {
+    }
+    
     test("HashTable")
     {
         // In array
@@ -123,6 +127,8 @@ class TreeTest extends FunSuite
     {
         // The shape property: the tree is a complete binary tree; that is, all levels of the tree, except possibly the last one (deepest) are fully filled, and, if the last level of the tree is not complete, the nodes of that level are filled from left to right.
         // The heap property: each node is greater than or equal to each of its children according to a comparison predicate defined for the data structure.
+        // Add: place new value in next location. Bubble up swapping to maintain the invariant.
+        // Remove: Remove top value. Place last value in top location. Bubble down to maintain the invariant.
     }
     
     test("Binary tree")
@@ -135,13 +141,17 @@ class TreeTest extends FunSuite
     
     test("Trie tree")
     {
+        // Prefix tree
     }
     
     test("AA tree")
     {
     }
     
-    
+    test("B-tree")
+    {
+        // Mainly for on disk
+    }
 }
 
 class TraversalTest extends FunSuite
@@ -222,18 +232,25 @@ class Concurrency extends FunSuite
     
     test("Mutexes")
     {
+        // Mutual exclusion lock
     }
     
     test("Semaphores")
     {
+        // Increment (non-blocking) atomically
+        // Wait - waits for it to be non-zero then decrements atomically
+        // E.g. to mediate access to N instances of a resource
     }
     
     test("Monitors")
     {
+        // A code region which only one thread can occupy concurrently
     }
     
     test("Condition variables")
     {
+        // Operations: wait - block until notified
+        // signal - if anyone is waiting, unblock one thread and let it run
     }
     
     test("Deadlock/livelock")
@@ -242,14 +259,44 @@ class Concurrency extends FunSuite
     
     test("What resource a process needs")
     {
+        /*
+            * Code, open files, signals, processor and address state, threads, global variables
+            * Priorities, resource limits
+            
+        */
     }
     
     test("What resource a thread needs")
     {
+        /*
+            * Program counter, process stack, cpu registers
+            * Linux doesn't distinguish between processes and threads - just has 'runnable tasks' with variable levels of sharing.
+        */
     }
     
     test("How context switching works")
     {
+        /*
+        * Time spent in saving and restoring processor state (inc. current privilege level)
+        * Pollution of processor caches
+        * Switching between different processes
+         * Virtual memory maps need to be switched
+         * Synchronization of memory caches
+        *
+        * Paging
+        
+        * State required to save known as the hardware context. x86 has a special segment, the TSS (Task State Segment) to store hardware contexts. Not used by Linux?
+        * 
+        
+        * Linux is able to find best next task to run in O(1).
+          * Runqueue has a list per process priority. In smp, each CPU has its own queue.
+          * Waitqueue for sleeping/blocked processes
+          
+        * Page copy on write for forked processes (whcih initially share the parent state)
+        */
+        
+        
+
     }
     
     
