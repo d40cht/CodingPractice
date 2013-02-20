@@ -118,7 +118,13 @@ class HashingTest extends FunSuite
 }
 
 class TreeTest extends FunSuite
-{   
+{
+    test("Binary heap")
+    {
+        // The shape property: the tree is a complete binary tree; that is, all levels of the tree, except possibly the last one (deepest) are fully filled, and, if the last level of the tree is not complete, the nodes of that level are filled from left to right.
+        // The heap property: each node is greater than or equal to each of its children according to a comparison predicate defined for the data structure.
+    }
+    
     test("Binary tree")
     {
     }
@@ -135,9 +141,7 @@ class TreeTest extends FunSuite
     {
     }
     
-    test("Binary heap")
-    {
-    }
+    
 }
 
 class TraversalTest extends FunSuite
